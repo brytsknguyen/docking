@@ -47,24 +47,24 @@ r1 = 0.5;
 r2 = sqrt(3)/2;
 
 % Target's periodic motion magnitude
-tarPeriMag = 0*diag([5, 5, 1.25]);
+tarPeriMag = diag([5, 5, 1.25]);
 
 % Target's linear motion
-vqL = 0*0.05*[-1; 1; 0.5];
+vqL = 0.05*[-1; 1; 0.5];
 
 % Initial phase of the autonomous PE process
 psi = 0;
 
 % Noises
-dmu = 0;
-dstd = 0;
-phimu = 0.0;
-phistd = 0.0;
-
 % dmu = 0;
-% dstd = 0.1;
+% dstd = 0;
 % phimu = 0.0;
-% phistd = 0.01;
+% phistd = 0.0;
+
+dmu = 0;
+dstd = 0.1;
+phimu = 0.0;
+phistd = 0.01;
 
 % Relative docking position
 qS = [-20, 5, 2]';
@@ -446,7 +446,6 @@ else
     grid on;
     tightfig(gcf);
 end
-
 % uav_pos_traj_gca = plot3(p(1, 1), p(2, 1), p(3, 1), '-',...
 %                          'color', [0, 0.5, 0]);
 % uav_pos_est_traj_gca = plot3(p(1), p(2), p(3), '-',...
@@ -559,8 +558,3 @@ daspect([1 1 1]);
 view([69 37]);
 pause(0.01);
 tightfig(gcf);
-
-figure;
-hold on;
-plot(t, qb(1, :), 'r');
-plot(t, qh(1, :), '+b');
